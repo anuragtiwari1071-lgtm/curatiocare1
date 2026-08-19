@@ -1,6 +1,14 @@
 /*
   Link: </premium-v1.css>; rel="stylesheet"
+  Link: </curatio-visual.css>; rel="stylesheet"
+  Link: </point4-tests.css>; rel="stylesheet"
   Cache-Control: public, max-age=0, must-revalidate
 
 /premium-v1.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/curatio-visual.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/point4-tests.css
   Cache-Control: public, max-age=0, must-revalidate
