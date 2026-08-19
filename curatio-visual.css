@@ -22,3 +22,4 @@ h1{color:var(--curatio-ink);text-wrap:balance}.hero p:not(.eyebrow){font-size:17
 @keyframes curatio-pop{0%{transform:scale(.82);opacity:0}70%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
 @media(max-width:760px){.topbar{height:70px}main{padding-left:14px;padding-right:14px}.hero{padding:34px 0 28px}.hero:before{width:120px;height:120px;right:-20px;top:8%;box-shadow:0 0 0 18px rgba(20,163,160,.035),0 0 0 38px rgba(20,163,160,.018)}.hero p:not(.eyebrow){font-size:15px}.quick-grid button{padding:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+/* trigger */
