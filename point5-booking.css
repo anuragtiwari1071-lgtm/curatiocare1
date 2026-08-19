@@ -1,0 +1,224 @@
+/* Curatio.care — Point 5: Booking Form Visual Refinement
+   PRESENTATION ONLY. No fields, validation, booking logic, API, database, payment or location behavior is changed.
+*/
+
+/* Booking view: keep selectors intentionally broad enough for the existing single-file UI,
+   while affecting only form/panel presentation. */
+#bookingView .section-head,
+#bookView .section-head,
+.booking-view .section-head{
+  margin-bottom:20px;
+}
+
+#bookingView .panel,
+#bookView .panel,
+.booking-view .panel,
+#bookingView form,
+#bookView form,
+.booking-view form{
+  border-radius:22px;
+}
+
+#bookingView form,
+#bookView form,
+.booking-view form{
+  padding:22px;
+  border:1px solid #dce8ea;
+  background:rgba(255,255,255,.94);
+  box-shadow:0 10px 32px rgba(16,47,59,.055);
+}
+
+#bookingView label,
+#bookView label,
+.booking-view label{
+  display:block;
+  margin-bottom:7px;
+  color:#29444c;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.005em;
+}
+
+#bookingView input:not([type="checkbox"]):not([type="radio"]),
+#bookingView select,
+#bookingView textarea,
+#bookView input:not([type="checkbox"]):not([type="radio"]),
+#bookView select,
+#bookView textarea,
+.booking-view input:not([type="checkbox"]):not([type="radio"]),
+.booking-view select,
+.booking-view textarea{
+  width:100%;
+  min-height:48px;
+  padding:12px 14px;
+  border:1px solid #d6e3e5;
+  border-radius:13px;
+  background:#fff;
+  color:#17343d;
+  font:inherit;
+  outline:none;
+  box-shadow:0 3px 12px rgba(16,47,59,.025);
+  transition:border-color .18s ease,box-shadow .18s ease,background .18s ease;
+}
+
+#bookingView textarea,
+#bookView textarea,
+.booking-view textarea{
+  min-height:92px;
+  resize:vertical;
+  line-height:1.5;
+}
+
+#bookingView input:focus,
+#bookingView select:focus,
+#bookingView textarea:focus,
+#bookView input:focus,
+#bookView select:focus,
+#bookView textarea:focus,
+.booking-view input:focus,
+.booking-view select:focus,
+.booking-view textarea:focus{
+  border-color:#0d858c;
+  box-shadow:0 0 0 4px rgba(13,133,140,.085),0 6px 18px rgba(16,47,59,.04);
+}
+
+#bookingView input::placeholder,
+#bookingView textarea::placeholder,
+#bookView input::placeholder,
+#bookView textarea::placeholder,
+.booking-view input::placeholder,
+.booking-view textarea::placeholder{
+  color:#8a9ba0;
+}
+
+#bookingView .field,
+#bookView .field,
+.booking-view .field{
+  margin-bottom:16px;
+}
+
+#bookingView .field-grid,
+#bookingView .form-grid,
+#bookView .field-grid,
+#bookView .form-grid,
+.booking-view .field-grid,
+.booking-view .form-grid{
+  gap:16px;
+}
+
+#bookingView .selected-test,
+#bookView .selected-test,
+.booking-view .selected-test{
+  margin-bottom:18px;
+  border-color:#d7e8e8;
+  background:linear-gradient(135deg,#f7fbfb,#f0f8f7);
+}
+
+#bookingView .notice,
+#bookingView .info,
+#bookingView .payment-note,
+#bookView .notice,
+#bookView .info,
+#bookView .payment-note,
+.booking-view .notice,
+.booking-view .info,
+.booking-view .payment-note{
+  border-radius:15px;
+  padding:14px 16px;
+  border:1px solid #d6e9e6;
+  background:#f0f8f6;
+}
+
+#bookingView .consent,
+#bookingView .checkbox-row,
+#bookView .consent,
+#bookView .checkbox-row,
+.booking-view .consent,
+.booking-view .checkbox-row{
+  padding:13px 14px;
+  border:1px solid #e0e9ea;
+  border-radius:13px;
+  background:#fafcfc;
+  line-height:1.45;
+}
+
+#bookingView input[type="checkbox"],
+#bookingView input[type="radio"],
+#bookView input[type="checkbox"],
+#bookView input[type="radio"],
+.booking-view input[type="checkbox"],
+.booking-view input[type="radio"]{
+  accent-color:#0d858c;
+}
+
+#bookingView .primary,
+#bookView .primary,
+.booking-view .primary{
+  min-height:46px;
+  border-radius:12px;
+  padding-inline:20px;
+  box-shadow:0 8px 20px rgba(13,133,140,.14);
+}
+
+#bookingView .secondary,
+#bookingView .ghost,
+#bookView .secondary,
+#bookView .ghost,
+.booking-view .secondary,
+.booking-view .ghost{
+  min-height:44px;
+  border-radius:12px;
+}
+
+#bookingView .error,
+#bookView .error,
+.booking-view .error{
+  border-radius:11px;
+}
+
+@media(max-width:760px){
+  #bookingView form,
+  #bookView form,
+  .booking-view form{
+    padding:17px;
+    border-radius:18px;
+  }
+
+  #bookingView .field-grid,
+  #bookingView .form-grid,
+  #bookView .field-grid,
+  #bookView .form-grid,
+  .booking-view .field-grid,
+  .booking-view .form-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  #bookingView input:not([type="checkbox"]):not([type="radio"]),
+  #bookingView select,
+  #bookingView textarea,
+  #bookView input:not([type="checkbox"]):not([type="radio"]),
+  #bookView select,
+  #bookView textarea,
+  .booking-view input:not([type="checkbox"]):not([type="radio"]),
+  .booking-view select,
+  .booking-view textarea{
+    min-height:47px;
+    font-size:16px; /* prevents mobile browser zoom on focus */
+  }
+
+  #bookingView .primary,
+  #bookView .primary,
+  .booking-view .primary{
+    width:100%;
+    min-height:48px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #bookingView input,#bookingView select,#bookingView textarea,
+  #bookView input,#bookView select,#bookView textarea,
+  .booking-view input,.booking-view select,.booking-view textarea{
+    transition-duration:.001ms!important;
+  }
+}
