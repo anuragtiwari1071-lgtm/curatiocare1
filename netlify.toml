@@ -1,0 +1,5 @@
+[build]
+  publish = "."
+
+# Curatio.care — Netlify deployment configuration
+# UI-only deployment support. No application logic changes.
