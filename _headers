@@ -2,6 +2,7 @@
   Link: </premium-v1.css>; rel="stylesheet"
   Link: </curatio-visual.css>; rel="stylesheet"
   Link: </point4-tests.css>; rel="stylesheet"
+  Link: </point5-booking.css>; rel="stylesheet"
   Cache-Control: public, max-age=0, must-revalidate
 
 /premium-v1.css
@@ -11,4 +12,7 @@
   Cache-Control: public, max-age=0, must-revalidate
 
 /point4-tests.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/point5-booking.css
   Cache-Control: public, max-age=0, must-revalidate
