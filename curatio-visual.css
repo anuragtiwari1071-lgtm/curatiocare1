@@ -1,0 +1,232 @@
+/* Curatio.care — Point 2: Home Page Visual Enhancement
+   HOME PAGE ONLY. UI/UX presentation layer.
+   No content, state, event-handler, API, auth, database, booking or business logic.
+*/
+
+#homeView{
+  position:relative;
+}
+
+#homeView .hero{
+  min-height:430px;
+  padding:64px 0 48px;
+  align-items:center;
+  isolation:isolate;
+}
+
+#homeView .hero > div:first-child{
+  position:relative;
+  z-index:2;
+  padding:8px 0;
+}
+
+#homeView .hero > div:first-child:after{
+  content:"";
+  position:absolute;
+  left:-90px;
+  top:15px;
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(20,163,160,.075) 0%,rgba(20,163,160,.028) 42%,transparent 70%);
+  pointer-events:none;
+  z-index:-1;
+}
+
+#homeView .hero .eyebrow{
+  margin-bottom:16px;
+  font-size:11px;
+  padding:8px 12px;
+}
+
+#homeView .hero h1{
+  max-width:650px;
+  margin-bottom:20px;
+  font-size:clamp(38px,5.3vw,62px);
+  line-height:1.01;
+  letter-spacing:-.052em;
+}
+
+#homeView .hero p:not(.eyebrow){
+  max-width:625px;
+  margin-top:0;
+  margin-bottom:24px;
+  font-size:17px;
+  line-height:1.72;
+}
+
+#homeView .hero .primary{
+  min-height:50px;
+  padding:14px 21px;
+  border-radius:14px;
+  font-size:14px;
+  letter-spacing:-.005em;
+}
+
+#homeView .hero-card{
+  min-height:315px;
+  padding:32px;
+  border-radius:30px;
+  justify-content:flex-end;
+  overflow:hidden;
+  box-shadow:0 28px 70px rgba(5,83,94,.24);
+}
+
+#homeView .hero-card span{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border-radius:17px;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.18);
+  font-size:29px;
+  margin-bottom:auto;
+}
+
+#homeView .hero-card b{
+  margin-top:20px;
+  font-size:12px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+#homeView .hero-card strong{
+  font-size:27px;
+  line-height:1.15;
+}
+
+#homeView .hero-card small{
+  max-width:290px;
+  font-size:12px;
+  line-height:1.6;
+}
+
+#homeView .quick-grid{
+  position:relative;
+  z-index:3;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin-top:0;
+}
+
+#homeView .quick-grid button{
+  min-height:142px;
+  padding:22px;
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+#homeView .quick-grid span{
+  margin-bottom:14px;
+}
+
+#homeView .quick-grid b{
+  font-size:16px;
+  letter-spacing:-.015em;
+}
+
+#homeView .quick-grid small{
+  font-size:12px;
+  line-height:1.45;
+}
+
+#homeView .info-card{
+  position:relative;
+  min-height:78px;
+  margin-top:16px;
+  padding:18px 22px;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+#homeView .info-card:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:4px;
+  background:linear-gradient(180deg,#087884,#14a3a0);
+}
+
+#homeView .info-card b{
+  font-size:14px;
+}
+
+#homeView .info-card p{
+  font-size:12px;
+  line-height:1.5;
+}
+
+#homeView .info-card span{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:rgba(255,255,255,.62);
+  border:1px solid rgba(13,120,132,.08);
+}
+
+@media(max-width:760px){
+  #homeView .hero{
+    min-height:0;
+    padding:38px 0 30px;
+  }
+
+  #homeView .hero h1{
+    max-width:100%;
+    font-size:clamp(37px,11vw,49px);
+    line-height:1.02;
+  }
+
+  #homeView .hero p:not(.eyebrow){
+    font-size:15px;
+    line-height:1.65;
+    margin-bottom:21px;
+  }
+
+  #homeView .hero .primary{
+    width:100%;
+    min-height:52px;
+  }
+
+  #homeView .quick-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  #homeView .quick-grid button{
+    min-height:112px;
+    padding:18px;
+  }
+
+  #homeView .info-card{
+    min-height:0;
+    padding:17px 18px 17px 21px;
+  }
+
+  #homeView .info-card p{
+    max-width:285px;
+  }
+}
+
+@media(min-width:761px) and (max-width:980px){
+  #homeView .hero{
+    gap:18px;
+  }
+
+  #homeView .hero-card{
+    min-height:290px;
+    padding:26px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #homeView *,#homeView *:before,#homeView *:after{
+    transition-duration:.001ms!important;
+  }
+}
