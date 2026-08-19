@@ -230,3 +230,117 @@
     transition-duration:.001ms!important;
   }
 }
+
+/* Curatio.care — Point 3: Header / Navigation Visual Refinement
+   VISUAL LAYER ONLY. Existing navigation behavior is untouched.
+*/
+
+.topbar{
+  min-height:74px;
+  background:rgba(255,255,255,.92);
+  border-bottom:1px solid rgba(219,231,232,.88);
+  box-shadow:0 6px 24px rgba(16,47,59,.045);
+  transition:box-shadow .2s ease,background .2s ease,border-color .2s ease;
+}
+
+.topbar .brand{
+  min-width:0;
+  padding:6px 0;
+}
+
+.topbar .brand img{
+  width:44px;
+  height:44px;
+  border-radius:13px;
+  box-shadow:0 5px 14px rgba(11,92,104,.12);
+}
+
+.topbar .brand b{
+  font-size:17px;
+  line-height:1.1;
+  letter-spacing:-.02em;
+}
+
+.topbar .brand span{
+  font-size:10px;
+  line-height:1.2;
+  letter-spacing:.015em;
+}
+
+.topbar .top-actions{
+  gap:7px;
+}
+
+.topbar .lang,
+.topbar .admin-link{
+  min-height:38px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:11px;
+  padding:9px 12px;
+  font-size:12px;
+  font-weight:700;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;
+}
+
+.topbar .lang:hover,
+.topbar .admin-link:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 16px rgba(16,47,59,.08);
+}
+
+.topbar .lang:focus-visible,
+.topbar .admin-link:focus-visible{
+  outline:3px solid rgba(13,120,130,.18);
+  outline-offset:2px;
+}
+
+.topbar .lang{
+  background:rgba(255,255,255,.9);
+}
+
+.topbar .admin-link{
+  border-color:rgba(13,120,130,.20);
+  background:rgba(232,245,243,.72);
+}
+
+@media(max-width:760px){
+  .topbar{
+    min-height:68px;
+    padding:0 14px;
+  }
+
+  .topbar .brand{
+    gap:8px;
+  }
+
+  .topbar .brand img{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+  }
+
+  .topbar .brand b{
+    font-size:15px;
+  }
+
+  .topbar .brand span{
+    font-size:9px;
+  }
+
+  .topbar .top-actions{
+    gap:6px;
+  }
+
+  .topbar .lang{
+    min-height:36px;
+    padding:8px 10px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .topbar,.topbar .lang,.topbar .admin-link{
+    transition-duration:.001ms!important;
+  }
+}
