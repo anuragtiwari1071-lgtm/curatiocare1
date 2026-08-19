@@ -1,0 +1,188 @@
+/* Curatio.care — Point 4: Test Selection Visual Refinement
+   TEST SELECTION UI ONLY. No test data, selection logic, pricing, API or booking behavior.
+*/
+
+.section-head{
+  margin-top:26px;
+  margin-bottom:18px;
+  align-items:center;
+}
+
+.section-head h2{
+  font-size:30px;
+  line-height:1.12;
+  letter-spacing:-.035em;
+}
+
+.section-head .back{
+  width:44px;
+  height:44px;
+  border-radius:13px;
+  box-shadow:0 5px 16px rgba(16,47,59,.055);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+
+.section-head .back:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 20px rgba(16,47,59,.09);
+}
+
+.search{
+  min-height:50px;
+  padding:14px 17px;
+  border-radius:14px;
+  border-color:#d4e2e4;
+  box-shadow:0 5px 18px rgba(16,47,59,.035);
+  font-size:14px;
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+
+.search::placeholder{
+  color:#829399;
+}
+
+.search:focus{
+  border-color:#0d7882;
+  box-shadow:0 0 0 4px rgba(13,120,130,.08),0 8px 24px rgba(16,47,59,.055);
+}
+
+.test-list{
+  gap:16px;
+}
+
+.test-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+  padding:20px;
+  border-color:#dce8ea;
+  box-shadow:0 7px 24px rgba(16,47,59,.045);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+
+.test-card:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:48px;
+  height:3px;
+  background:linear-gradient(90deg,#0b7882,#14a3a0);
+  border-radius:0 0 4px 0;
+}
+
+.test-card:hover{
+  transform:translateY(-2px);
+  border-color:#c9dfe1;
+  box-shadow:0 12px 30px rgba(16,47,59,.08);
+}
+
+.test-card.selected{
+  border-color:#0d9a9c;
+  box-shadow:0 0 0 2px rgba(13,154,156,.09),0 12px 30px rgba(16,47,59,.07);
+}
+
+.test-card .row{
+  align-items:flex-start;
+}
+
+.test-card h3{
+  font-size:18px;
+  line-height:1.25;
+  letter-spacing:-.02em;
+}
+
+.test-card .price{
+  font-size:15px;
+  padding:5px 8px;
+  border-radius:9px;
+  background:#edf7f6;
+}
+
+.test-card p{
+  margin:10px 0 0;
+  line-height:1.6;
+}
+
+.test-actions{
+  margin-top:17px;
+  padding-top:13px;
+  border-top:1px solid #edf2f3;
+}
+
+.test-select{
+  min-height:38px;
+  margin-top:14px;
+  padding:7px 9px;
+  border-radius:10px;
+  background:#f5faf9;
+  border:1px solid #e0eeee;
+}
+
+.test-select input{
+  accent-color:#0d7882;
+}
+
+.test-selection-bar{
+  top:82px;
+  padding:12px 14px;
+  border-radius:17px;
+  border-color:#cfe5e3;
+  box-shadow:0 12px 32px rgba(16,47,59,.10);
+  backdrop-filter:blur(10px);
+}
+
+.test-selection-bar .primary{
+  min-height:42px;
+  border-radius:11px;
+}
+
+.selected-test{
+  border-radius:17px;
+  padding:17px;
+  box-shadow:0 6px 20px rgba(16,47,59,.04);
+}
+
+@media(max-width:760px){
+  .section-head{
+    margin-top:18px;
+  }
+
+  .section-head h2{
+    font-size:26px;
+  }
+
+  .search{
+    min-height:48px;
+  }
+
+  .test-list{
+    gap:12px;
+  }
+
+  .test-card{
+    padding:18px;
+  }
+
+  .test-card:hover{
+    transform:none;
+  }
+
+  .test-card .price{
+    font-size:14px;
+  }
+
+  .test-selection-bar{
+    top:74px;
+  }
+
+  .test-selection-bar .primary{
+    min-height:40px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .section-head .back,.test-card,.search{
+    transition-duration:.001ms!important;
+  }
+}
