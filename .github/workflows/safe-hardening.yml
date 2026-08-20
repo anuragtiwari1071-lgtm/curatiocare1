@@ -1,0 +1,41 @@
+name: Safe site hardening
+on:
+  push:
+    branches: ["safe-hardening"]
+permissions:
+  contents: write
+jobs:
+  harden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Apply non-destructive hardening
+        shell: python
+        run: |
+          from pathlib import Path
+          js=r'''(()=>{const $$=(s,r=document)=>[...r.querySelectorAll(s)];const enhance=()=>{$$('img').forEach(x=>{if(!x.hasAttribute('alt'))x.alt='Curatio.care';if(!x.loading)x.loading='lazy'});$$('button').forEach(x=>{if(!x.getAttribute('aria-label')&&!x.textContent.trim())x.setAttribute('aria-label','Action')});$$('input,select,textarea').forEach((x,i)=>{if(!x.id)x.id='safe-field-'+i});$$('label').forEach(x=>{const c=x.querySelector('input,select,textarea');if(c&&!x.htmlFor)x.htmlFor=c.id});$$('.modal').forEach(x=>{x.setAttribute('role',x.getAttribute('role')||'dialog');x.setAttribute('aria-modal','true')})};const empty=()=>{$$('.test-list').forEach(l=>{const ok=[...l.children].some(x=>!x.classList.contains('hidden')&&x.textContent.trim());let m=l.parentElement.querySelector('.safe-empty-tests');if(!ok){if(!m){m=document.createElement('div');m.className='safe-empty-tests';m.setAttribute('role','status');m.innerHTML='<strong>Tests are temporarily unavailable.</strong><span>Please try again shortly or contact us for assistance.</span>';l.parentElement.insertBefore(m,l)}l.style.display='none'}else{if(m)m.remove();l.style.removeProperty('display')}})};const forms=()=>{$$('form').forEach(f=>{if(f.dataset.safeProtected)return;f.dataset.safeProtected=1;f.addEventListener('submit',e=>{if(!f.checkValidity()){e.preventDefault();f.reportValidity()}},true)})};const init=()=>{enhance();empty();forms();window.addEventListener('error',e=>console.error(e.error||e.message));window.addEventListener('unhandledrejection',e=>console.error(e.reason))};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();new MutationObserver(()=>{enhance();empty();forms()}).observe(document.documentElement,{subtree:true,childList:true})})();'''
+          css='<style id="safe-hardening-style">.safe-empty-tests{background:#fff;border:1px solid #dbe7e8;border-radius:18px;padding:22px;text-align:center;color:#102f3b;box-shadow:0 5px 20px rgba(16,47,59,.04);margin-bottom:14px}.safe-empty-tests strong{display:block;font-size:16px}.safe-empty-tests span{display:block;color:#647985;font-size:13px;line-height:1.5;margin-top:6px}:focus-visible{outline:3px solid rgba(13,120,130,.28);outline-offset:2px}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}</style>'
+          for name,public in [('index.html',True),('admin.html',False)]:
+            p=Path(name)
+            if not p.exists(): continue
+            s=p.read_text()
+            s=s.replace('<title>Curatio.care — App Demo</title>','<title>Curatio.care — Home Sample Collection & Test Booking</title>',1)
+            if 'name="description"' not in s:s=s.replace('</head>','<meta name="description" content="Book diagnostic tests with Curatio.care and arrange convenient sample collection."><meta name="robots" content="index,follow">'+css+'</head>',1)
+            elif 'safe-hardening-style' not in s:s=s.replace('</head>',css+'</head>',1)
+            if public and 'rel="canonical"' not in s:s=s.replace('</head>','<link rel="canonical" href="https://curatiocare1.netlify.app/"><meta property="og:title" content="Curatio.care — Home Sample Collection & Test Booking"><meta property="og:description" content="Book diagnostic tests and arrange convenient sample collection."><meta property="og:type" content="website"><meta property="og:url" content="https://curatiocare1.netlify.app/"></head>',1)
+            if 'safe-hardening.js' not in s:s=s.replace('</body>','<script src="/safe-hardening.js" defer></script></body>',1)
+            p.write_text(s)
+          Path('safe-hardening.js').write_text(js)
+      - name: Validate and commit
+        run: |
+          test -s index.html && test -s admin.html && test -s safe-hardening.js
+          grep -q safe-hardening.js index.html
+          grep -q safe-hardening.js admin.html
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html admin.html safe-hardening.js
+          git diff --cached --check
+          git commit -m 'Apply safe frontend hardening and accessibility fixes' || exit 0
+          git push
