@@ -344,3 +344,60 @@
     transition-duration:.001ms!important;
   }
 }
+
+
+/* Curatio.care — Home Background Image
+   VISUAL-ONLY LAYER.
+   Existing content, buttons, layout, functions and interactions untouched.
+*/
+
+#homeView .hero{
+  position:relative;
+  overflow:hidden;
+}
+
+#homeView .hero:before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:100%;
+  background-image:url("curatio-home-bg.jpg");
+  background-repeat:no-repeat;
+  background-position:center bottom;
+  background-size:contain;
+  opacity:.12;
+  pointer-events:none;
+  z-index:0;
+}
+
+#homeView .hero > *{
+  position:relative;
+  z-index:2;
+}
+
+#homeView .hero > div:first-child:after{
+  z-index:-1;
+}
+
+@media(max-width:760px){
+  #homeView .hero:before{
+    height:100%;
+    background-size:contain;
+    background-position:center bottom;
+    opacity:.085;
+  }
+}
+
+@media(min-width:761px) and (max-width:1100px){
+  #homeView .hero:before{
+    opacity:.10;
+  }
+}
+
+@media(prefers-reduced-transparency:reduce){
+  #homeView .hero:before{
+    opacity:.055;
+  }
+}
