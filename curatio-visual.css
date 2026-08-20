@@ -363,11 +363,11 @@
   right:0;
   bottom:0;
   height:100%;
-  background-image:url("curatio-home-bg.jpg");
+  background-image:url("/curatio-home-bg.jpg");
   background-repeat:no-repeat;
   background-position:center bottom;
   background-size:contain;
-  opacity:.12;
+  opacity:.20;
   pointer-events:none;
   z-index:0;
 }
@@ -377,16 +377,13 @@
   z-index:2;
 }
 
-#homeView .hero > div:first-child:after{
-  z-index:-1;
-}
 
 @media(max-width:760px){
   #homeView .hero:before{
     height:100%;
     background-size:contain;
     background-position:center bottom;
-    opacity:.085;
+    opacity:.13;
   }
 }
 
