@@ -345,31 +345,30 @@
   }
 }
 
-
-/* Curatio.care — Global Background Image
-   VISUAL-ONLY LAYER.
-   Applies across Home, Tests, Bookings, Reports and other views.
-*/
+/* =========================================================
+   CURATIO.CARE — GLOBAL BACKGROUND IMAGE
+   Final version
+   Applies across customer-facing pages.
+   ========================================================= */
 
 body{
-  position:relative;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background-image:url("/curatio-home-bg.jpg");
+  background-color:#f7faf9;
+  background-image:
+    linear-gradient(
+      rgba(247,250,249,.84),
+      rgba(247,250,249,.84)
+    ),
+    url("/curatio-home-bg.jpg");
   background-repeat:no-repeat;
   background-position:center center;
   background-size:cover;
-  opacity:.12;
-  pointer-events:none;
-  z-index:0;
+  background-attachment:fixed;
 }
 
+/* Keep the website UI clearly above the background */
 .topbar{
   position:sticky;
+  top:0;
   z-index:10;
 }
 
@@ -379,24 +378,12 @@ footer{
   z-index:1;
 }
 
-
+/* Mobile */
 @media(max-width:760px){
-  #homeView .hero:before{
-    height:100%;
-    background-size:contain;
-    background-position:center bottom;
-    opacity:.13;
+  body{
+    background-position:center center;
+    background-size:cover;
+    background-attachment:scroll;
   }
 }
-
-@media(min-width:761px) and (max-width:1100px){
-  #homeView .hero:before{
-    opacity:.10;
-  }
-}
-
-@media(prefers-reduced-transparency:reduce){
-  #homeView .hero:before{
-    opacity:.055;
-  }
-}
+   
