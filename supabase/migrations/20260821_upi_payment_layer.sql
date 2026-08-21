@@ -40,6 +40,19 @@ create unique index if not exists payments_receipt_number_uidx
 create index if not exists payments_booking_id_created_at_idx
   on public.payments (booking_id, created_at desc);
 
+create table if not exists public.payment_webhook_events (
+  event_id text primary key,
+  event_type text not null,
+  status text not null default 'processing' check (status in ('processing','processed','failed')),
+  payload jsonb not null,
+  received_at timestamptz not null default now(),
+  processed_at timestamptz,
+  error_message text
+);
+
+alter table public.payment_webhook_events enable row level security;
+
+comment on table public.payment_webhook_events is 'Internal idempotency/audit ledger for verified payment gateway webhooks.';
 comment on column public.payments.gateway_order_id is 'Gateway order identifier; server-generated and never trusted from the browser.';
 comment on column public.payments.gateway_payment_id is 'Gateway payment identifier returned after payment.';
 comment on column public.payments.gateway_signature is 'Verified checkout signature retained for audit.';
