@@ -37,6 +37,11 @@ create unique index if not exists payments_receipt_number_uidx
   on public.payments (receipt_number)
   where receipt_number is not null;
 
+-- Prevent two simultaneous unpaid UPI orders for the same booking.
+create unique index if not exists payments_active_upi_booking_uidx
+  on public.payments (booking_id)
+  where method = 'upi' and status in ('pending','received');
+
 create index if not exists payments_booking_id_created_at_idx
   on public.payments (booking_id, created_at desc);
 
